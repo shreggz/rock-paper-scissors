@@ -1,4 +1,6 @@
 const moveOptions = ["rock", "paper", "scissors"];
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     let computerSelection = moveOptions[Math.floor(Math.random()*moveOptions.length)]
@@ -42,8 +44,6 @@ function checkResult(playerSelection, computerSelection) {
 }
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = getPlayerChoice();
-    computerSelection = getComputerChoice();
     checkResult(playerSelection, computerSelection);
     if (checkResult(playerSelection, computerSelection) == "Draw") {
         return "It's a draw!";
@@ -51,5 +51,24 @@ function playRound(playerSelection, computerSelection) {
         return `You win! ${playerSelection} beats ${computerSelection}`;
     } else if (checkResult(playerSelection, computerSelection) == "Computer") {
         return `You lose! ${computerSelection} beats ${playerSelection}`;
+    }
+}
+
+function playGame() {
+    while ((playerScore < 3) && (computerScore < 3)) {
+        playerSelection = getPlayerChoice();
+        computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+        if (checkResult(playerSelection, computerSelection) == "Player") {
+            playerScore++;
+        } else if (checkResult(playerSelection, computerSelection) == "Computer") {
+            computerScore++;
+        }
+    }
+
+    if (playerScore > computerScore) {
+        return "You killed the machine. Cheers!";
+    } else if (computerScore > playerScore) {
+        return "The machine killed you. Too bad.";
     }
 }
