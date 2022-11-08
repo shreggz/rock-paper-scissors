@@ -31,23 +31,25 @@ function validatePlayerInput(playerSelection) {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
-    computerSelection = getComputerChoice();
-    playerSelection = getPlayerChoice();
+function checkResult(playerSelection, computerSelection) {
+    if (playerSelection == computerSelection) {
+        return "Draw";
+    } else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "paper")) {
+        return "Player";
+    } else if ((playerSelection == "rock" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "rock")) {
+        return "Computer";
+    }
+}
 
-    if (playerSelection === computerSelection) {
-        console.log("It's a draw!");
-    } else if (playerSelection === "rock" && computerSelection === "paper") {
-        console.log("Computer chose paper. You lose!");
-    } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        console.log("Computer chose scissors. You win!");
-    } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        console.log("Computer chose scissors. You lose!");
-    } else if (playerSelection === "paper" && computerSelection === "rock") {
-        console.log("Computer chose rock. You win!");
-    } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        console.log("Computer chose rock. You lose!");
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        console.log("Computer chose paper. You win!")
+function playRound(playerSelection, computerSelection) {
+    playerSelection = getPlayerChoice();
+    computerSelection = getComputerChoice();
+    checkResult(playerSelection, computerSelection);
+    if (checkResult(playerSelection, computerSelection) == "Draw") {
+        return "It's a draw!";
+    } else if (checkResult(playerSelection, computerSelection) == "Player") {
+        return `You win! ${playerSelection} beats ${computerSelection}`;
+    } else if (checkResult(playerSelection, computerSelection) == "Computer") {
+        return `You lose! ${computerSelection} beats ${playerSelection}`;
     }
 }
