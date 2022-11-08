@@ -46,10 +46,13 @@ function checkResult(playerSelection, computerSelection) {
 function playRound(playerSelection, computerSelection) {
     checkResult(playerSelection, computerSelection);
     if (checkResult(playerSelection, computerSelection) == "Draw") {
+        alert("It's a draw!");
         return "It's a draw!";
     } else if (checkResult(playerSelection, computerSelection) == "Player") {
+        alert(`You win! ${playerSelection} beats ${computerSelection}`)
         return `You win! ${playerSelection} beats ${computerSelection}`;
     } else if (checkResult(playerSelection, computerSelection) == "Computer") {
+        alert(`You lose! ${computerSelection} beats ${playerSelection}`)
         return `You lose! ${computerSelection} beats ${playerSelection}`;
     }
 }
