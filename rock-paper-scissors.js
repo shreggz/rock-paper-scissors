@@ -67,8 +67,10 @@ function playGame() {
     }
 
     if (playerScore > computerScore) {
-        return "You killed the machine. Cheers!";
+        alert("You killed the machine. Cheers!");
+        return "win";
     } else if (computerScore > playerScore) {
-        return "The machine killed you. Too bad.";
+        alert("The machine killed you. Too bad.");
+        return "lose";
     }
 }
