@@ -67,9 +67,11 @@ function playGame() {
     }
 
     if (playerScore > computerScore) {
+        console.log("You killed the machine. Cheers!")
         alert("You killed the machine. Cheers!");
         return "win";
     } else if (computerScore > playerScore) {
+        console.log("The machine killed you. Too bad.")
         alert("The machine killed you. Too bad.");
         return "lose";
     }
