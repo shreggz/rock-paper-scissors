@@ -19,11 +19,17 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
-        alert("Draw");
+        let result = document.createElement('p');
+        result.textContent = "It's a draw!";
+        gameResult.appendChild(result);
     } else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "paper")) {
-        alert("Player");
+        let result = document.createElement('p');
+        result.textContent = `You win...${playerSelection} beats ${computerSelection}!`;
+        gameResult.appendChild(result);
     } else if ((playerSelection == "rock" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "rock")) {
-        alert("Computer");
+        let result = document.createElement('p');
+        result.textContent = `You lose...${computerSelection} beats ${playerSelection}!`;
+        gameResult.appendChild(result);
     }
 }
 
