@@ -2,10 +2,43 @@ const moveOptions = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const playerSelection = button.id;
+        const computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection);
+        
+    });
+});
+
 function getComputerChoice() {
     let computerSelection = moveOptions[Math.floor(Math.random()*moveOptions.length)]
     return computerSelection;
 }
+
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection == computerSelection) {
+        alert("Draw");
+    } else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "paper")) {
+        alert("Player");
+    } else if ((playerSelection == "rock" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "rock")) {
+        alert("Computer");
+    }
+}
+
+
+
+/*
+function getPlayerChoice() {
+    let playerSelection = document.querySelectorAll('button');
+    playerSelection.forEach((button) => {
+        button.addEventListener('click', () => {
+        console.log(button.id);
+        });
+    });
+}
+
 
 function getPlayerChoice() {
     let playerInput = prompt("Choose your weapon!");
@@ -33,6 +66,8 @@ function validatePlayerInput(playerSelection) {
     }
 }
 
+
+
 function checkResult(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
         return "Draw";
@@ -42,6 +77,9 @@ function checkResult(playerSelection, computerSelection) {
         return "Computer";
     }
 }
+
+
+
 
 function playRound(playerSelection, computerSelection) {
     checkResult(playerSelection, computerSelection);
@@ -57,6 +95,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+/*
 function playGame() {
     while ((playerScore < 3) && (computerScore < 3)) {
         playerSelection = getPlayerChoice();
@@ -79,3 +118,5 @@ function playGame() {
         return "lose";
     }
 }
+
+*/
