@@ -8,7 +8,6 @@ buttons.forEach((button) => {
         const playerSelection = button.id;
         const computerSelection = getComputerChoice();
         playRound(playerSelection, computerSelection);
-        
     });
 });
 
@@ -26,16 +25,44 @@ function playRound(playerSelection, computerSelection) {
         let result = document.createElement('p');
         result.textContent = `You win...${playerSelection} beats ${computerSelection}!`;
         gameResult.appendChild(result);
+        playerScore++;
     } else if ((playerSelection == "rock" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "rock")) {
         let result = document.createElement('p');
         result.textContent = `You lose...${computerSelection} beats ${playerSelection}!`;
         gameResult.appendChild(result);
+        computerScore++;
     }
 }
 
 
 
 /*
+function playGame() {
+    while ((playerScore < 3) && (computerScore < 3)) {
+        playerSelection = getPlayerChoice();
+        computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+        if (checkResult(playerSelection, computerSelection) == "Player") {
+            playerScore++;
+        } else if (checkResult(playerSelection, computerSelection) == "Computer") {
+            computerScore++;
+        }
+    }
+
+    if (playerScore > computerScore) {
+        console.log("You killed the machine. Cheers!")
+        alert("You killed the machine. Cheers!");
+        return "win";
+    } else if (computerScore > playerScore) {
+        console.log("The machine killed you. Too bad.")
+        alert("The machine killed you. Too bad.");
+        return "lose";
+    }
+}
+
+
+
+
 function getPlayerChoice() {
     let playerSelection = document.querySelectorAll('button');
     playerSelection.forEach((button) => {
