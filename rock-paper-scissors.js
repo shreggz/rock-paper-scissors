@@ -3,6 +3,7 @@ let playerScore = 0;
 let computerScore = 0;
 
 const buttons = document.querySelectorAll('button');
+document.getElementById("rock").disabled = false;
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         const playerSelection = button.id;
@@ -48,17 +49,25 @@ function declareWinner(playerScore, computerScore) {
         restart.innerHTML = "Play again?";
         playAgain.appendChild(restart);
         restart.addEventListener('click', refreshPage);
+        disablePlayerMoves();
     } else if (computerScore == 3) {
         winnerDeclaration.textContent = "The machine killed you. Too bad.";
         let restart = document.createElement("button");
         restart.innerHTML = "Play again?";
         playAgain.appendChild(restart);
         restart.addEventListener('click', refreshPage);
+        disablePlayerMoves();
     }
 }
 
 const refreshPage = () => {
     location.reload();
+}
+
+function disablePlayerMoves () {
+    document.getElementById("rock").disabled = true;
+    document.getElementById("paper").disabled = true;
+    document.getElementById("scissors").disabled = true;
 }
 
 
