@@ -38,8 +38,28 @@ function playRound(playerSelection, computerSelection) {
 function updateScoreboard(playerScore, computerScore) {
     playerScoreboard.textContent = `${playerScore}`;
     computerScoreboard.textContent = `${computerScore}`;
+    declareWinner(playerScore, computerScore);
 }
 
+function declareWinner(playerScore, computerScore) {
+    if (playerScore == 3) {
+        winnerDeclaration.textContent = "You killed the machine. Cheers!";
+        let restart = document.createElement("button");
+        restart.innerHTML = "Play again?";
+        playAgain.appendChild(restart);
+        restart.addEventListener('click', refreshPage);
+    } else if (computerScore == 3) {
+        winnerDeclaration.textContent = "The machine killed you. Too bad.";
+        let restart = document.createElement("button");
+        restart.innerHTML = "Play again?";
+        playAgain.appendChild(restart);
+        restart.addEventListener('click', refreshPage);
+    }
+}
+
+const refreshPage = () => {
+    location.reload();
+}
 
 
 /*
