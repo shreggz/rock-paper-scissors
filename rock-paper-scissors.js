@@ -32,6 +32,12 @@ function playRound(playerSelection, computerSelection) {
         gameResult.appendChild(result);
         computerScore++;
     }
+    updateScoreboard(playerScore, computerScore);
+}
+
+function updateScoreboard(playerScore, computerScore) {
+    playerScoreboard.textContent = `${playerScore}`;
+    computerScoreboard.textContent = `${computerScore}`;
 }
 
 
