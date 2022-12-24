@@ -3,7 +3,6 @@ let playerScore = 0;
 let computerScore = 0;
 
 const buttons = document.querySelectorAll('button');
-document.getElementById("rock").disabled = false;
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         const playerSelection = button.id;
