@@ -21,15 +21,18 @@ function playRound(playerSelection, computerSelection) {
         let result = document.createElement('p');
         result.textContent = "It's a draw!";
         gameResult.appendChild(result);
+        gameResult.lastChild.scrollIntoView();
     } else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "paper")) {
         let result = document.createElement('p');
         result.textContent = `You win...${playerSelection} beats ${computerSelection}!`;
         gameResult.appendChild(result);
+        gameResult.lastChild.scrollIntoView();
         playerScore++;
     } else if ((playerSelection == "rock" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "rock")) {
         let result = document.createElement('p');
         result.textContent = `You lose...${computerSelection} beats ${playerSelection}!`;
         gameResult.appendChild(result);
+        gameResult.lastChild.scrollIntoView();
         computerScore++;
     }
     updateScoreboard(playerScore, computerScore);
@@ -54,6 +57,7 @@ function declareWinner(playerScore, computerScore) {
         let restart = document.createElement("button");
         restart.innerHTML = "Play again?";
         playAgain.appendChild(restart);
+        playAgain.lastChild.scrollIntoView();
         restart.addEventListener('click', refreshPage);
         disablePlayerMoves();
     }
