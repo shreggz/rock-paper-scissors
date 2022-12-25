@@ -17,3 +17,7 @@ button:disabled {
     background-color: purple;
     cursor: not-allowed;
 }
+
+#winnerDeclaration {
+    font-weight: bold;
+}
