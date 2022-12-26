@@ -50,6 +50,7 @@ function declareWinner(playerScore, computerScore) {
         let restart = document.createElement("button");
         restart.innerHTML = "Play again?";
         playAgain.appendChild(restart);
+        playAgain.lastChild.scrollIntoView();
         restart.addEventListener('click', refreshPage);
         disablePlayerMoves();
     } else if (computerScore == 3) {
